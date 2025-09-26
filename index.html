@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jessica Doner · Home</title>
+  <style>
+    :root {
+      --max: min(920px, 100%);
+      --ink: #0d1b2a;
+      --paper: #f6f7fb;
+      --panel: #ffffff;
+      --accent: #0b5bd3;
+      --border: #d7d9e1;
+      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 3.5rem 1rem 2.5rem;
+      background: linear-gradient(135deg, #f6f7fb 0%, #eef3ff 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    header .inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.3rem, 3vw + 1rem, 3.2rem);
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin: 0.75rem 0 0;
+      max-width: 60ch;
+      font-size: 1.05rem;
+    }
+
+    nav {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    nav a {
+      padding: 0.45rem 0.95rem;
+      border: 1px solid rgba(11, 91, 211, 0.25);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      background: rgba(11, 91, 211, 0.08);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(11, 91, 211, 0.18);
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 1rem 4rem;
+    }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.75rem 1.6rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 15px 30px rgba(15, 32, 67, 0.04);
+    }
+
+    section h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.2rem;
+      background: #fdfdff;
+    }
+
+    .card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0 0 0.75rem;
+    }
+
+    a.inline-link {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    footer {
+      padding: 2.5rem 1rem 3rem;
+      text-align: center;
+      color: #41506b;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 2.5rem 1rem 2rem;
+      }
+
+      section {
+        padding: 1.4rem 1.2rem;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <h1>Hi, I’m Jessica 👋</h1>
+      <p>Applied Mathematics M.S. @ EWU. I build teaching tools, playful experiments, and clear technical guides. This page collects the projects that are currently live on my GitHub Pages.</p>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Live Sites</a>
+        <a href="#notes">What I’m Exploring</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>I care about making technical ideas approachable—whether that’s a Java badge tracker for CS students, a study guide generator for calculus, or a playground for algorithmic art. Right now my focus is teaching CSCD210, curating resources for GenCyber at EWU, and refining workflows where humans and AI pair-program the lesson plan.</p>
+    </section>
+
+    <section id="projects">
+      <h2>Live Sites & Experiments</h2>
+      <div class="project-grid">
+        <article class="card">
+          <h3>EWU Cyber Games Portal</h3>
+          <p>I vibe-coded this with middle schoolers during the annual EWU GenCyber camp at the Catalyst. The goal: turn mindless brain-rot energy into something that still teaches basic cyber concepts.</p>
+          <p>The games are scrappy and don’t play as smoothly as I imagined—it turns out great game feel takes time! I’d love ideas, bug reports, or code contributions.</p>
+          <p><a class="inline-link" href="https://jdoner02.github.io/ewu-cyber-games-portal/">Visit the portal ↗</a></p>
+        </article>
+
+        <article class="card">
+          <h3>Math Guides Archive</h3>
+          <p>This was my first website, pre-AI-agents. I scripted a pipeline to iterate through textbook sections and call the OpenAI API for custom study guides tailored to the students I was tutoring.</p>
+          <p>The quality varies—some guides are gems, others are prompts to improve—but the experiment taught me a lot about scaffolding questions for learners.</p>
+          <p><a class="inline-link" href="https://jdoner02.github.io/math_guides/">Browse the guides ↗</a></p>
+        </article>
+
+        <article class="card">
+          <h3>Concept Map Explorer</h3>
+          <p>A visualization of “explosive recursive decomposition.” I ask an LLM (ChatGPT here) to split a subject into 3–15 domains, recursively drill down to atomic concepts, then reshape the data for D3.js.</p>
+          <p>The result is a zoomable concept map you can remix for any corpus—this example uses the EWU course catalog dataset.</p>
+          <p><a class="inline-link" href="https://jdoner02.github.io/concept-map-d3js/?dataset=ewu-course-catalog.json#dataset=ewu-course-catalog.json">Explore the map ↗</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="notes">
+      <h2>What I’m Exploring Next</h2>
+      <ul>
+        <li>Shaping the EWU Cyber Games into bite-sized modules students can remix.</li>
+        <li>Designing AI-assisted study guides that surface misconceptions rather than just answers.</li>
+        <li>Extending the concept-map pipeline to support syllabus planning and competency tracking.</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email me at <a class="inline-link" href="mailto:jdoner02@ewu.edu">jdoner02@ewu.edu</a> or say hi on <a class="inline-link" href="https://github.com/jdoner02">GitHub @jdoner02</a>. If you ship improvements to any of these projects, I’ll happily feature them here.</p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Jessica Doner · Built with HTML + CSS and a curiosity loop
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
