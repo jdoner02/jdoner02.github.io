@@ -5,13 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jessica Doner · Home</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
     :root {
-      --max: min(920px, 100%);
-      --ink: #0d1b2a;
-      --paper: #f6f7fb;
-      --panel: #ffffff;
-      --accent: #0b5bd3;
-      --border: #d7d9e1;
+      --max: min(960px, 100%);
+      /* Stardew Valley inspired palette */
+      --ink: #3d2914;
+      --ink-light: #5a4a3a;
+      --paper: #f5f0e6;
+      --panel: #fffdf7;
+      --accent: #5a8f3e;
+      --accent-dark: #3d6b2a;
+      --accent-warm: #c17f3c;
+      --border: #d4c8b0;
+      --border-dark: #a89880;
+      --highlight: #fff8dc;
       font-family: "Inter", "Segoe UI", system-ui, sans-serif;
     }
 
@@ -21,13 +29,32 @@
       margin: 0;
       color: var(--ink);
       background: var(--paper);
-      line-height: 1.6;
+      line-height: 1.7;
+    }
+
+    /* Pixel-style decorative border */
+    .pixel-border {
+      border: 4px solid var(--border-dark);
+      box-shadow:
+        inset -4px -4px 0 var(--border),
+        inset 4px 4px 0 var(--highlight),
+        4px 4px 0 rgba(61, 41, 20, 0.1);
+    }
+
+    /* Pixel font for RPG headers */
+    .pixel-header {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      color: var(--accent-dark);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
     }
 
     header {
-      padding: 3.5rem 1rem 2.5rem;
-      background: linear-gradient(135deg, #f6f7fb 0%, #eef3ff 100%);
-      border-bottom: 1px solid var(--border);
+      padding: 3rem 1rem 2.5rem;
+      background: linear-gradient(180deg, #e8f0d8 0%, var(--paper) 100%);
+      border-bottom: 4px solid var(--border-dark);
     }
 
     header .inner {
@@ -35,16 +62,50 @@
       margin: 0 auto;
     }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(2.3rem, 3vw + 1rem, 3.2rem);
-      letter-spacing: -0.02em;
+    .welcome-box {
+      background: var(--panel);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
     }
 
-    header p {
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw + 0.5rem, 2.4rem);
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    h1 .wave {
+      display: inline-block;
+      animation: wave 2s ease-in-out infinite;
+      transform-origin: 70% 70%;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      10%, 30% { transform: rotate(14deg); }
+      20% { transform: rotate(-8deg); }
+      40% { transform: rotate(-4deg); }
+      50%, 100% { transform: rotate(0deg); }
+    }
+
+    .tagline {
       margin: 0.75rem 0 0;
-      max-width: 60ch;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
+      color: var(--ink-light);
+      max-width: 55ch;
+    }
+
+    .role-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      padding: 0.4rem 0.8rem;
+      margin-top: 1rem;
+      border: 2px solid var(--accent-dark);
+      box-shadow: 2px 2px 0 var(--accent-dark);
     }
 
     nav {
@@ -55,20 +116,35 @@
     }
 
     nav a {
-      padding: 0.45rem 0.95rem;
-      border: 1px solid rgba(11, 91, 211, 0.25);
-      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      border: 3px solid var(--border-dark);
+      background: var(--panel);
       text-decoration: none;
-      color: var(--accent);
+      color: var(--ink);
       font-weight: 600;
-      background: rgba(11, 91, 211, 0.08);
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      font-size: 0.9rem;
+      box-shadow:
+        inset -2px -2px 0 var(--border),
+        inset 2px 2px 0 var(--highlight),
+        3px 3px 0 rgba(61, 41, 20, 0.15);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
     }
 
     nav a:hover,
     nav a:focus {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 18px rgba(11, 91, 211, 0.18);
+      transform: translate(-2px, -2px);
+      box-shadow:
+        inset -2px -2px 0 var(--border),
+        inset 2px 2px 0 var(--highlight),
+        5px 5px 0 rgba(61, 41, 20, 0.2);
+    }
+
+    nav a:active {
+      transform: translate(1px, 1px);
+      box-shadow:
+        inset -2px -2px 0 var(--border),
+        inset 2px 2px 0 var(--highlight),
+        1px 1px 0 rgba(61, 41, 20, 0.1);
     }
 
     main {
@@ -79,154 +155,378 @@
 
     section {
       background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.75rem 1.6rem;
-      margin-bottom: 1.75rem;
-      box-shadow: 0 15px 30px rgba(15, 32, 67, 0.04);
+      padding: 1.75rem 2rem;
+      margin-bottom: 2rem;
     }
 
     section h2 {
-      margin: 0 0 0.75rem;
-      font-size: 1.5rem;
-      letter-spacing: -0.01em;
+      margin: 0 0 0.5rem;
+      font-size: 1.4rem;
+      color: var(--ink);
     }
 
+    section p {
+      margin: 0.75rem 0;
+    }
+
+    /* Featured Quest Board - Skill Tree */
+    .featured {
+      background: linear-gradient(135deg, #e8f0d8 0%, var(--panel) 50%);
+      border-width: 5px;
+      position: relative;
+    }
+
+    .featured::before {
+      content: "★ FEATURED";
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: var(--accent-warm);
+      color: white;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.5rem;
+      padding: 0.3rem 0.6rem;
+      border: 2px solid #a86328;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .feature-main {
+      grid-column: 1 / -1;
+    }
+
+    .feature-box {
+      background: var(--highlight);
+      border: 2px solid var(--border);
+      padding: 1rem 1.25rem;
+    }
+
+    .feature-box h4 {
+      margin: 0 0 0.5rem;
+      font-size: 0.95rem;
+      color: var(--accent-dark);
+    }
+
+    .feature-box p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 0.7rem 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 3px solid var(--accent-dark);
+      box-shadow:
+        inset -2px -2px 0 rgba(0,0,0,0.15),
+        inset 2px 2px 0 rgba(255,255,255,0.2),
+        4px 4px 0 var(--accent-dark);
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+      margin-top: 1rem;
+    }
+
+    .cta-button:hover {
+      transform: translate(-2px, -2px);
+      box-shadow:
+        inset -2px -2px 0 rgba(0,0,0,0.15),
+        inset 2px 2px 0 rgba(255,255,255,0.2),
+        6px 6px 0 var(--accent-dark);
+    }
+
+    /* Classroom section */
+    .classroom {
+      background: linear-gradient(135deg, #f0e8d8 0%, var(--panel) 50%);
+    }
+
+    .classroom-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    /* Workshop - Project Cards */
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.25rem;
       margin-top: 1.25rem;
     }
 
     .card {
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.2rem;
-      background: #fdfdff;
+      border: 3px solid var(--border-dark);
+      padding: 1.25rem;
+      background: var(--panel);
+      box-shadow:
+        inset -2px -2px 0 var(--border),
+        inset 2px 2px 0 var(--highlight),
+        3px 3px 0 rgba(61, 41, 20, 0.1);
     }
 
     .card h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1.2rem;
+      margin: 0 0 0.6rem;
+      font-size: 1.1rem;
+      color: var(--ink);
     }
 
     .card p {
-      margin: 0 0 0.75rem;
+      margin: 0 0 0.6rem;
+      font-size: 0.95rem;
     }
 
     a.inline-link {
-      color: var(--accent);
+      color: var(--accent-dark);
       font-weight: 600;
       text-decoration: none;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    a.inline-link:hover {
+      color: var(--accent);
+    }
+
+    /* Tavern - What's Next */
+    .tavern {
+      background: linear-gradient(135deg, #f5e6d8 0%, var(--panel) 50%);
+    }
+
+    .tavern ul {
+      margin: 1rem 0 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .tavern li {
+      padding: 0.5rem 0 0.5rem 1.75rem;
+      position: relative;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .tavern li:last-child {
+      border-bottom: none;
+    }
+
+    .tavern li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent-warm);
+      font-weight: bold;
+    }
+
+    /* Mailbox - Contact */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--panel);
+      border: 3px solid var(--border-dark);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 3px 3px 0 rgba(61, 41, 20, 0.15);
+      transition: transform 0.1s ease;
+    }
+
+    .contact-btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 rgba(61, 41, 20, 0.2);
     }
 
     footer {
       padding: 2.5rem 1rem 3rem;
       text-align: center;
-      color: #41506b;
+      color: var(--ink-light);
       font-size: 0.95rem;
+      border-top: 4px solid var(--border);
     }
 
     footer a {
-      color: var(--accent);
+      color: var(--accent-dark);
       text-decoration: none;
       font-weight: 600;
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 2.5rem 1rem 2rem;
-      }
+    .footer-tagline {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.5rem;
+      color: var(--accent);
+      margin-top: 0.75rem;
+      letter-spacing: 0.05em;
+    }
 
-      section {
-        padding: 1.4rem 1.2rem;
-      }
+    @media (max-width: 700px) {
+      header { padding: 2rem 1rem; }
+      section { padding: 1.4rem 1.25rem; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .classroom-grid { grid-template-columns: 1fr; }
+      .pixel-header { font-size: 0.7rem; }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <div class="inner">
-      <h1>Hi, I’m Jessica 👋</h1>
-      <p>Applied Mathematics M.S. @ EWU. I like to build tools that help others and make the world a better place. This page collects the projects that are currently live on my GitHub Pages.</p>
+      <div class="welcome-box pixel-border">
+        <h1>Welcome, traveler <span class="wave">👋</span></h1>
+        <p class="tagline">I'm <strong>Jessica</strong>—I teach intro programming at EWU and build tools that turn confusion into curiosity. This is my corner of the internet where I share things I've made, things I'm figuring out, and things students might find useful.</p>
+        <span class="role-tag">CS Instructor @ EWU</span>
+      </div>
       <nav aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#projects">Live Sites</a>
-        <a href="#notes">What I’m Exploring</a>
-        <a href="#contact">Contact</a>
+        <a href="#skill-tree">Skill Tree</a>
+        <a href="#classroom">CSCD 210</a>
+        <a href="#workshop">Projects</a>
+        <a href="#tavern">What's Next</a>
+        <a href="#mailbox">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="about">
-      <h2>About</h2>
-      <p>I care about making technical ideas approachable—whether that’s a Java badge tracker for CS students, a study guide generator for calculus, or a cyber themed "brain rot" that makes mindless clicking passively educational. Right now my focus is teaching CSCD210, mapping course content to real life jobs, and applying mathematics in ways that improve the community and the lives of those around me.</p>
+    <!-- The Quest Board: CS Skill Tree -->
+    <section id="skill-tree" class="featured pixel-border">
+      <span class="pixel-header">The Quest Board</span>
+      <h2>CS Skill Tree</h2>
+      <p>This is the project I'm most excited about: an interactive skill tree for EWU's CS curriculum. Think of it like an RPG skill tree, but for your degree—see prerequisites as a visual graph, track which courses you've completed, and watch your progress unfold.</p>
+
+      <div class="feature-main">
+        <div class="feature-box">
+          <h4>What it does</h4>
+          <p>Visualizes course prerequisites using D3.js, shows degree pathways, and includes week-by-week concept breakdowns with 1-5 mastery tracking. Built with Svelte, TypeScript, and proper algorithms (Kahn's topological sort, transitive closure analysis).</p>
+        </div>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-box">
+          <h4>Track your progress</h4>
+          <p>Click courses to mark them complete. Your progress saves to local storage—no account needed, no data leaves your browser.</p>
+        </div>
+        <div class="feature-box">
+          <h4>Export &amp; share</h4>
+          <p>Export your progress as JSON to back it up, move between devices, or share with an advisor.</p>
+        </div>
+        <div class="feature-box">
+          <h4>Career alignment</h4>
+          <p>O*NET integration shows which workplace skills map to course concepts—see how what you're learning connects to actual jobs.</p>
+        </div>
+        <div class="feature-box">
+          <h4>Open source</h4>
+          <p>130+ unit tests, 43 E2E tests, and you can fork it for your own institution's curriculum.</p>
+        </div>
+      </div>
+
+      <a class="cta-button" href="https://jdoner02.github.io/cs-skill-tree/">Open the Skill Tree ↗</a>
     </section>
 
-    <section id="projects">
-      <h2>Live Sites & Experiments</h2>
+    <!-- The Classroom: CSCD 210 -->
+    <section id="classroom" class="classroom pixel-border">
+      <span class="pixel-header">The Classroom</span>
+      <h2>CSCD 210: Programming Principles I</h2>
+      <p>This is the class I teach—your first real encounter with programming in the CS major. We use Java, we build things from scratch, and we spend a lot of time on the stuff that trips people up (scope, references, debugging strategy).</p>
+
+      <div class="classroom-grid">
+        <div>
+          <p>My teaching philosophy: I'd rather you understand <em>why</em> something works than memorize <em>that</em> it works. We'll write buggy code on purpose, trace through memory, and talk about the mental models that make programming click.</p>
+          <p>I keep Canvas lean for quick reference. The <strong>Deep Dive Hub</strong> is where I put the sprawling explanations, extended examples, and the "wait, I'm still confused" content that doesn't fit in a 50-minute lecture.</p>
+          <p><a class="inline-link" href="https://jdoner02.github.io/cscd210-class-site/">Visit the Deep Dive Hub ↗</a></p>
+        </div>
+        <div class="feature-box">
+          <h4>For my students</h4>
+          <p style="margin-bottom: 0.75rem;">Use the Skill Tree to see where CSCD 210 concepts lead—variables today, data structures next quarter, algorithms the quarter after. It all connects.</p>
+          <p style="margin: 0;"><a class="inline-link" href="https://jdoner02.github.io/cs-skill-tree/?course=CSCD210">View CSCD 210 in the Skill Tree ↗</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Workshop: Other Projects -->
+    <section id="workshop" class="pixel-border">
+      <span class="pixel-header">The Workshop</span>
+      <h2>Other Projects</h2>
+      <p>Experiments, tools, and things I've shipped. Some are polished, some are scrappy—all were built because I thought they'd help someone.</p>
+
       <div class="project-grid">
         <article class="card">
           <h3>EWU Cyber Games Portal</h3>
-          <p>I vibe-coded this with middle schoolers during the annual EWU GenCyber camp at the Catalyst. The goal: turn mindless brain-rot energy into something that still teaches basic cyber concepts.</p>
-          <p>The games are scrappy and don’t play as smoothly as I imagined—it turns out great game feel takes time! I’d love ideas, bug reports, or code contributions.</p>
+          <p>I vibe-coded this with middle schoolers during the annual EWU GenCyber camp. The goal: turn mindless brain-rot energy into something that still teaches basic cyber concepts.</p>
+          <p>The games are scrappy and don't play as smoothly as I imagined—it turns out great game feel takes time! I'd love bug reports or contributions.</p>
           <p><a class="inline-link" href="https://jdoner02.github.io/ewu-cyber-games-portal/">Visit the portal ↗</a></p>
         </article>
 
         <article class="card">
           <h3>Math Guides Archive</h3>
-          <p>This was my first website, pre-AI-agents. I scripted a pipeline to iterate through textbook sections and call the OpenAI API for custom study guides tailored to the students I was tutoring.</p>
-          <p>The quality varies—some guides are gems, others are prompts to improve—but the experiment taught me a lot about scaffolding questions for learners.</p>
+          <p>My first website, pre-AI-agents. I scripted a pipeline to iterate through textbook sections and call the OpenAI API for study guides tailored to students I was tutoring.</p>
+          <p>Quality varies—some guides are gems, others are prompts to improve—but the experiment taught me a lot about scaffolding questions for learners.</p>
           <p><a class="inline-link" href="https://jdoner02.github.io/math_guides/">Browse the guides ↗</a></p>
         </article>
 
         <article class="card">
           <h3>Concept Map Explorer</h3>
-          <p>A visualization of “explosive recursive decomposition.” I ask an LLM (ChatGPT here) to split a subject into 3–15 domains, recursively drill down to atomic concepts, then reshape the data for D3.js.</p>
-          <p>The result is a zoomable concept map you can remix for any corpus—this example uses the EWU course catalog dataset.</p>
-          <p><a class="inline-link" href="https://jdoner02.github.io/concept-map-d3js/?dataset=ewu-course-catalog.json#dataset=ewu-course-catalog.json">Explore the map ↗</a></p>
+          <p>A visualization of "explosive recursive decomposition." An LLM splits a subject into domains, recursively drills down to atomic concepts, then I reshape the data for D3.js.</p>
+          <p>Zoomable, remixable for any corpus. This example uses the EWU course catalog dataset.</p>
+          <p><a class="inline-link" href="https://jdoner02.github.io/concept-map-d3js/?dataset=ewu-course-catalog.json">Explore the map ↗</a></p>
         </article>
 
         <article class="card">
           <h3>Cybersecurity Job Scraper</h3>
-          <p>This site pulls daily federal cybersecurity and AI postings from USAJOBS, giving students a real-time view of opportunities.</p>
-          <p>I’m working toward NLx (National Labor Exchange) access so we can cover the full U.S. job market. The roadmap pairs NLP with ONET task/skill/knowledge tags—think <a class="inline-link" href="https://github.com/AlirezaJavadian/Syllabus-to-ONET">Syllabus-to-ONET</a> integrated with EWU course outcomes.</p>
-          <p>Help wanted! SIAM club (and anyone else excited about workforce pipelines) is teaming up to link EWU coursework, missing skills, and project ideas directly to live job postings.</p>
+          <p>Pulls daily federal cybersecurity and AI postings from USAJOBS. Working toward NLx access to cover the full U.S. job market.</p>
+          <p>The roadmap: pair NLP with ONET task/skill tags so students can see which skills they're missing and find projects to fill gaps.</p>
           <p><a class="inline-link" href="https://jdoner02.github.io/cybersecurity-job-scraper/">Explore the scraper ↗</a></p>
-        </article>
-
-        <article class="card">
-          <h3>CSCD210 Deep Dive Hub (WIP)</h3>
-          <p>A work-in-progress home base for detailed CSCD210 walkthroughs—perfect for students who are lost, curious, or want to go beyond the essentials we surface in Canvas.</p>
-          <p>The plan is to keep Canvas lean for quick answers while this site hosts the sprawling deep dives, extended examples, and quarter-long learning paths.</p>
-          <p><a class="inline-link" href="https://jdoner02.github.io/cscd210-class-site/">Preview the hub ↗</a></p>
         </article>
       </div>
     </section>
 
-    <section id="notes">
-      <h2>What I’m Exploring Next</h2>
+    <!-- The Tavern: What's Next -->
+    <section id="tavern" class="tavern pixel-border">
+      <span class="pixel-header">The Tavern</span>
+      <h2>What I'm Working On</h2>
+      <p>Rumors from the development backlog. These are the ideas I keep coming back to—not promises, just directions I'm excited about.</p>
       <ul>
-        <li>Shaping the EWU Cyber Games into bite-sized modules students can remix.</li>
-        <li>Expanding the cybersecurity job scraper with NLx data and ONET-linked skill mapping for EWU students.</li>
-        <li>Designing AI-assisted study guides that surface misconceptions rather than just answers.</li>
-        <li>Extending the concept-map pipeline to support syllabus planning and competency tracking.</li>
+        <li>Turning the Cyber Games into modular pieces students can remix and extend</li>
+        <li>Adding NLx data to the job scraper so it covers more than just federal postings</li>
+        <li>Building study guides that surface misconceptions instead of just giving answers (harder than it sounds)</li>
+        <li>Extending the skill tree with competency-based tracking tied to actual assessments</li>
+        <li>Figuring out how to make the Skill Tree exportable for other institutions</li>
       </ul>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email me at <a class="inline-link" href="mailto:jdoner@ewu.edu">jdoner@ewu.edu</a> or say hi on <a class="inline-link" href="https://github.com/jdoner02">GitHub @jdoner02</a>. If you ship improvements to any of these projects, I’ll happily feature them here.</p>
+    <!-- The Mailbox: Contact -->
+    <section id="mailbox" class="pixel-border">
+      <span class="pixel-header">The Mailbox</span>
+      <h2>Get in Touch</h2>
+      <p>Found a bug? Have an idea? Want to collaborate on something? I'm always happy to hear from students, educators, or anyone building tools for learning.</p>
+      <div class="contact-links">
+        <a class="contact-btn" href="mailto:jdoner@ewu.edu">
+          <span>✉</span> jdoner@ewu.edu
+        </a>
+        <a class="contact-btn" href="https://github.com/jdoner02">
+          <span>⌘</span> GitHub @jdoner02
+        </a>
+      </div>
     </section>
   </main>
 
   <footer>
-    © <span id="year"></span> Jessica Doner · Built with HTML + CSS and a curiosity loop
+    <p>© <span id="year"></span> Jessica Doner</p>
+    <p class="footer-tagline">Built with curiosity and a lot of coffee</p>
   </footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
